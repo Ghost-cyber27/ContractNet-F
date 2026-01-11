@@ -1,0 +1,48 @@
+RBSheet from react-native-raw-bottom-sheet
+
+how to do a date checker to check when a particular 
+date has reached or almost reached.
+
+
+
+
+
+
+
+
+#noreply email python code
+
+import smtplib
+from email.message import EmailMessage
+
+SMTP_HOST = "smtp.zoho.com"
+SMTP_PORT = 465
+SMTP_USER = "noreply@yourdomain.com"
+SMTP_PASS = "email_password"
+
+def send_noreply_email(to_email, subject, html):
+    msg = EmailMessage()
+    msg["From"] = f"Your App <{SMTP_USER}>"
+    msg["To"] = to_email
+    msg["Subject"] = subject
+    msg.add_alternative(html, subtype="html")
+
+    with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT) as server:
+        server.login(SMTP_USER, SMTP_PASS)
+        server.send_message(msg)
+
+# second part
+from fastapi import BackgroundTasks
+
+def send_email_background(to, subject, body):
+    send_noreply_email(to, subject, body)
+
+@app.post("/signup")
+def signup(email: str, background_tasks: BackgroundTasks):
+    background_tasks.add_task(
+        send_email_background,
+        email,
+        "Welcome",
+        "Thanks for signing up!"
+    )
+    return {"message": "Check your email"}
