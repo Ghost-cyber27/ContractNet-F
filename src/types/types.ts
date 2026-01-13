@@ -80,7 +80,7 @@ export type RootStackParamList = {
 
 export type UserStackParamList = {
     UserTabs: undefined;
-    ChatDetails: undefined;
+    ChatDetails: { receiver_id: number };
     DiscoverJobDetails: {id: number; client_name: string; title: string; budget: string; date: string; category: string; des: string}; // await editing
     OnGoingProjectsDetails: {id: string; title: string; des: string; budget: string; deadline: string; status: string;}; // await editing
 }; //user: string; pic: string;

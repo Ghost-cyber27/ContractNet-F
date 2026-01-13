@@ -47,7 +47,7 @@ export const AppStackNav: React.FC = () => {
   return (
       <UserStack.Navigator screenOptions={{ headerShown: false }}>
         <UserStack.Screen name="UserTabs" component={UserTabs} />
-        <UserStack.Screen name="ChatDetails" component={ChatDetails} options={{headerShown: true}}/>
+        <UserStack.Screen name="ChatDetails" component={ChatDetails} options={{headerShown: false}}/>
         <UserStack.Screen name="DiscoverJobDetails" component={DiscoverJobDetails} options={{
           headerShown: true,
           }}/>
